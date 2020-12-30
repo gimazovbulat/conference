@@ -20,6 +20,7 @@ import java.util.Collections;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -49,6 +50,7 @@ public class PresentationControllerTest {
 
         mockMvc.perform(post("/presentations")
                 .contentType("application/json")
+                .with(csrf())
                 .content(objectMapper.writeValueAsString(presentationDto)))
                 .andExpect(status().isOk())
                 .andReturn();
@@ -65,6 +67,7 @@ public class PresentationControllerTest {
 
         mockMvc.perform(post("/presentations")
                 .contentType("application/json")
+                .with(csrf())
                 .content(objectMapper.writeValueAsString(presentationDto)))
                 .andExpect(status().isForbidden())
                 .andReturn();
@@ -80,6 +83,7 @@ public class PresentationControllerTest {
 
         mockMvc.perform(post("/presentations")
                 .contentType("application/json")
+                .with(csrf())
                 .content(objectMapper.writeValueAsString(presentationDto)))
                 .andExpect(status().isBadRequest())
                 .andReturn();
@@ -123,6 +127,7 @@ public class PresentationControllerTest {
 
         mockMvc.perform(post("/presentations")
                 .contentType("application/json")
+                .with(csrf())
                 .content(objectMapper.writeValueAsString(presentationDto)))
                 .andExpect(status().isOk())
                 .andReturn();
@@ -138,6 +143,7 @@ public class PresentationControllerTest {
 
         mockMvc.perform(post("/presentations")
                 .contentType("application/json")
+                .with(csrf())
                 .content(objectMapper.writeValueAsString(presentationDto)))
                 .andExpect(status().isBadRequest())
                 .andReturn();
@@ -147,7 +153,8 @@ public class PresentationControllerTest {
     @WithMockUser(username = "presenter", password = "$2a$10$Kxsi6p3vU1Ljh8y7cukt9O649ADS.P/qwbmX/j7aSDchx1q1Vwdj6", authorities = "PRESENTER")
     @Test
     public void deleteTest_SupplyPresentationDto_ReturnsBadRequest() {
-        mockMvc.perform(delete("/presentations/{id}", 1L))
+        mockMvc.perform(delete("/presentations/{id}", 1L)
+                .with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn();
     }
