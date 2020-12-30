@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-unique-constraint-on-presentation-title
+      author: gimazov (generated)
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: presentations
+      changes:
+        - addUniqueConstraint:
+            columnNames: email
+            constraintName: presentation_title_key
+            tableName: presentations

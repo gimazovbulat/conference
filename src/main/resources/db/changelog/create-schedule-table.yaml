@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-schedule-table
+      author: gimazov (generated)
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: schedule
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: schedule_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: room_id
+                  type: BIGINT
+              - column:
+                  name: presentation_id
+                  type: BIGINT
+              - column:
+                  name: start_time
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: end_time
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: insert_time
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: update_time
+                  type: TIMESTAMP WITH TIME ZONE
+            tableName: schedule

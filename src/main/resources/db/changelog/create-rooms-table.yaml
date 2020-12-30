@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-rooms-table
+      author: gimazov (generated)
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: rooms
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: rooms_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: number
+                  type: int
+              - column:
+                  name: insert_time
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: update_time
+                  type: TIMESTAMP WITH TIME ZONE
+            tableName: rooms

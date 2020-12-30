@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-presentations-table
+      author: gimazov (generated)
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: presentations
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: presentations_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: title
+                  type: VARCHAR(50)
+              - column:
+                  name: about
+                  type: VARCHAR(255)
+              - column:
+                  name: insert_time
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: update_time
+                  type: TIMESTAMP WITH TIME ZONE
+            tableName: presentations

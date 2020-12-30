@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-user_presentation-table
+      author: gimazov (generated)
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: user_presentation
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: presentation_id
+                  type: BIGINT
+              - column:
+                  name: insert_time
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: update_time
+                  type: TIMESTAMP WITH TIME ZONE
+            tableName: user_presentation

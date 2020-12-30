@@ -1,0 +1,67 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-user-table
+      author: gimazov (generated)
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: users
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: user_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: email
+                  type: VARCHAR(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: role
+                  type: VARCHAR(20)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: first_name
+                  type: VARCHAR(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueBoolean: false
+                  name: confirmed
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueBoolean: false
+                  name: locked
+                  type: boolean
+              - column:
+                  name: confirm_link
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: last_name
+                  type: VARCHAR(50)
+              - column:
+                  name: insert_time
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: update_time
+                  type: TIMESTAMP WITH TIME ZONE
+            tableName: users

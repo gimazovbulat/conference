@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - include:
+      file: classpath:/db/changelog/create-user-table.yaml
+  - include:
+      file: classpath:/db/changelog/create-authentication_attempt-table.yaml
+  - include:
+      file: classpath:/db/changelog/create-presentations-table.yaml
+  - include:
+      file: classpath:/db/changelog/create-rooms-table.yaml
+  - include:
+      file: classpath:/db/changelog/create-schedule-table.yaml
+  - include:
+      file: classpath:/db/changelog/create-user_presentation-table.yaml
+  - include:
+      file: classpath:/db/changelog/add-unique-constraint-on-user-email.yaml
+  - include:
+      file: classpath:/db/changelog/data/rooms-data.sql
+  - include:
+      file: classpath:/db/changelog/data/users-data.sql
+
